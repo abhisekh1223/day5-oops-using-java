@@ -1,0 +1,16 @@
+public class PalindromeRecursive {
+    public static boolean isPalindromeRecursive(String s) {
+        String clean = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        return helper(clean, 0, clean.length() - 1);
+    }
+
+    private static boolean helper(String s, int i, int j) {
+        if (i >= j) return true;
+        if (s.charAt(i) != s.charAt(j)) return false;
+        return helper(s, i + 1, j - 1);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPalindromeRecursive("Able was I ere I saw Elba")); // true
+    }
+}
