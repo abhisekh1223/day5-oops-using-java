@@ -1,0 +1,17 @@
+import java.util.*;
+
+public class AnagramCheck {
+    public static boolean isAnagram(String s1, String s2) {
+        String clean1 = s1.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        String clean2 = s2.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        char[] arr1 = clean1.toCharArray();
+        char[] arr2 = clean2.toCharArray();
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        return Arrays.equals(arr1, arr2);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isAnagram("Listen", "Silent")); // true
+    }
+}
