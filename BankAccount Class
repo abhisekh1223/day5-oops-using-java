@@ -1,0 +1,33 @@
+public class BankAccount {
+    String owner;
+    int balance;
+
+    BankAccount(String owner, int balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    String deposit(int amount) {
+        balance += amount;
+        return "Deposited " + amount + ". New Balance: " + balance;
+    }
+
+    String withdraw(int amount) {
+        if (amount > balance) {
+            return "Transaction failed: Insufficient funds.";
+        }
+        balance -= amount;
+        return "Withdrew " + amount + ". New Balance: " + balance;
+    }
+
+    public String toString() {
+        return "Account(" + owner + ") → Balance: " + balance;
+    }
+
+    public static void main(String[] args) {
+        BankAccount acc = new BankAccount("Ravi", 500);
+        System.out.println(acc.deposit(200));
+        System.out.println(acc.withdraw(800));
+        System.out.println(acc);
+    }
+}
