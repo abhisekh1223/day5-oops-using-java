@@ -1,0 +1,36 @@
+public class Time {
+    int hours;
+    int minutes;
+
+    Time(int h, int m) {
+        this.hours = h;
+        this.minutes = m;
+        normalize();
+    }
+
+    private void normalize() {
+        this.hours += this.minutes / 60;
+        this.minutes = this.minutes % 60;
+    }
+
+    Time add(Time other) {
+        return new Time(this.hours + other.hours, this.minutes + other.minutes);
+    }
+
+    Time subtract(Time other) {
+        int total1 = this.hours * 60 + this.minutes;
+        int total2 = other.hours * 60 + other.minutes;
+        int diff = Math.abs(total1 - total2);
+        return new Time(diff / 60, diff % 60);
+    }
+
+    public String toString() {
+        return hours + "h " + minutes + "m";
+    }
+
+    public static void main(String[] args) {
+        Time t1 = new Time(2, 75);
+        Time t2 = new Time(1, 50);
+        System.out.println("Add: " + t1.add(t2) + ", Subtract: " + t1.subtract(t2));
+    }
+}
