@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class WordFrequency {
+    public static Map<String, Integer> wordFrequency(String sentence) {
+        String[] words = sentence.toLowerCase().replaceAll("[^a-z ]", "").split("\\s+");
+        Map<String, Integer> freq = new HashMap<>();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                freq.put(word, freq.getOrDefault(word, 0) + 1);
+            }
+        }
+        return freq;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(wordFrequency("The cat and the dog.")); 
+        // {the=2, cat=1, and=1, dog=1}
+    }
+}
