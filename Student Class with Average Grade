@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Student {
+    String name;
+    int roll;
+    List<Integer> marks;
+
+    Student(String name, int roll, List<Integer> marks) {
+        this.name = name;
+        this.roll = roll;
+        this.marks = marks;
+    }
+
+    double average() {
+        int sum = 0;
+        for (int m : marks) sum += m;
+        return (double) sum / marks.size();
+    }
+
+    String grade() {
+        double avg = average();
+        if (avg >= 90) return "A";
+        else if (avg >= 75) return "B";
+        else if (avg >= 50) return "C";
+        else return "F";
+    }
+
+    public String toString() {
+        return name + " (" + roll + ") → Avg: " + String.format("%.2f", average()) + ", Grade: " + grade();
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student("Ravi", 101, Arrays.asList(85, 92, 78));
+        System.out.println(s);
+    }
+}
